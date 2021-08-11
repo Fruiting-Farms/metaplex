@@ -27,8 +27,9 @@ module.exports = withPlugins(plugins, {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  env:{
-    NEXT_PUBLIC_STORE_OWNER_ADDRESS_ADDRESS: process.env.REACT_APP_STORE_OWNER_ADDRESS_ADDRESS,
+  env: {
+    NEXT_PUBLIC_STORE_OWNER_ADDRESS_ADDRESS:
+      process.env.REACT_APP_STORE_OWNER_ADDRESS_ADDRESS,
   },
   async rewrites() {
     return [
