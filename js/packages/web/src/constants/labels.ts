@@ -1,5 +1,5 @@
 export const LABELS = {
-  CONNECT_LABEL: 'Connect Wallet',
+  CONNECT_LABEL: 'Sign In',
   GIVE_SOL: 'Give me SOL',
   FAUCET_INFO:
     'This faucet will help you fund your accounts outside of Solana main network.',
@@ -7,7 +7,7 @@ export const LABELS = {
   MENU_HOME: 'Home',
   MENU_FAUCET: 'Faucet',
   APP_TITLE: 'Fruiting Farms',
-  CONNECT_BUTTON: 'Connect',
+  CONNECT_BUTTON: 'Sign In',
   WALLET_TOOLTIP: 'Wallet public key',
   WALLET_BALANCE: 'Wallet balance',
   SETTINGS_TOOLTIP: 'Settings',
@@ -16,4 +16,5 @@ export const LABELS = {
   ENTER_AMOUNT: 'Enter an amount',
   TRANSFER: 'Transfer',
   SET_CORRECT_WALLET_NETWORK: 'Set correct wallet network',
+  SELL_BUTTON: "Sell 'Shrooms",
 };

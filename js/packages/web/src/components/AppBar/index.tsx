@@ -6,6 +6,7 @@ import { Notifications } from '../Notifications';
 import useWindowDimensions from '../../utils/layout';
 import { MenuOutlined } from '@ant-design/icons';
 import { useMeta } from '../../contexts';
+import { LABELS } from '../../constants';
 
 const UserActions = () => {
   const { wallet } = useWallet();
@@ -33,7 +34,7 @@ const UserActions = () => {
       ) : null}
       <Link to={`/auction/create/0`}>
         <Button className="connector" type="primary">
-          Sell
+          {LABELS.SELL_BUTTON}
         </Button>
       </Link>
     </>

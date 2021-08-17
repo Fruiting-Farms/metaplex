@@ -1,12 +1,17 @@
 @import '../../_colors.less';
 
+a {
+  color: @primary-yellow;
+}
+
 .App-Bar {
   padding: 0px;
   justify-content: space-between !important;
 }
 
 .app-bar-box {
-  background: #121212;
+  background: @primary-blue;
+  // background: #121212;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   display: flex;
@@ -17,7 +22,7 @@
 }
 
 .app-left {
-  padding: 8px 10px;
+  padding: 8px 0 10px;
 }
 
 .title {
@@ -29,14 +34,14 @@
   align-items: center;
   text-align: center;
 
-  color: #ffffff;
+  color: @primary-yellow;
   padding: 10px 14px 10px 6px;
 
   margin-bottom: 0px;
 }
 
 .divider {
-  border-left: 1px solid #282828;
+  border-left: 1px solid #fff;
   width: 2px;
   height: 40px;
   margin-right: 14px;
@@ -48,6 +53,7 @@
   font-size: 16px;
   line-height: 19px;
   border-width: 0px;
+  color: #fff;
 }
 
 .app-bar-inner {

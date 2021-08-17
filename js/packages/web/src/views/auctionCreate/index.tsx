@@ -37,10 +37,7 @@ import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { MintLayout } from '@solana/spl-token';
 import { useHistory, useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';
-import {
-  WinningConfigType,
-  AmountRange,
-} from '../../models/metaplex';
+import { WinningConfigType, AmountRange } from '../../models/metaplex';
 import moment from 'moment';
 import {
   createAuctionManager,
@@ -134,14 +131,15 @@ export const AuctionCreateView = () => {
 
   const [step, setStep] = useState<number>(0);
   const [stepsVisible, setStepsVisible] = useState<boolean>(true);
-  const [auctionObj, setAuctionObj] = useState<
-    | {
-        vault: StringPublicKey;
-        auction: StringPublicKey;
-        auctionManager: StringPublicKey;
-      }
-    | undefined
-  >(undefined);
+  const [auctionObj, setAuctionObj] =
+    useState<
+      | {
+          vault: StringPublicKey;
+          auction: StringPublicKey;
+          auctionManager: StringPublicKey;
+        }
+      | undefined
+    >(undefined);
   const [attributes, setAttributes] = useState<AuctionState>({
     reservationPrice: 0,
     items: [],
@@ -197,8 +195,8 @@ export const AuctionCreateView = () => {
           item.winningConfigType =
             item.metadata.info.updateAuthority ===
             (wallet?.publicKey || SystemProgram.programId).toBase58()
-            ? WinningConfigType.FullRightsTransfer
-            : WinningConfigType.TokenOnlyTransfer;
+              ? WinningConfigType.FullRightsTransfer
+              : WinningConfigType.TokenOnlyTransfer;
         }
         item.amountRanges = [
           new AmountRange({
@@ -617,10 +615,10 @@ const CategoryStep = (props: {
   return (
     <>
       <Row className="call-to-action">
-        <h2>List an item</h2>
-        <p>
+        <h2>Sell Those 'Shrooms</h2>
+        {/* <p>
           First time listing on Metaplex? <a>Read our sellers' guide.</a>
-        </p>
+        </p> */}
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
         <Col>
@@ -1485,12 +1483,12 @@ const TierTableStep = (props: {
 
                     const newTiers = newImmutableTiers(props.attributes.tiers);
                     if (items[0]) {
-                      const existing = props.attributes.items.find(it =>
-                        it.metadata.pubkey === items[0].metadata.pubkey,
+                      const existing = props.attributes.items.find(
+                        it => it.metadata.pubkey === items[0].metadata.pubkey,
                       );
                       if (!existing) newItems.push(items[0]);
-                      const index = newItems.findIndex(it =>
-                        it.metadata.pubkey === items[0].metadata.pubkey,
+                      const index = newItems.findIndex(
+                        it => it.metadata.pubkey === items[0].metadata.pubkey,
                       );
 
                       const myNewTier = newTiers[configIndex].items[itemIndex];

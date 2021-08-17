@@ -1,6 +1,11 @@
+// @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Homemade+Apple&family=Lato&display=swap');
 
 * {
-  font-family: "GraphikWeb";
+  // font-family: 'Lato';
+  // font-family: 'Homemade Apple', cursive;
+  font-family: 'Courgette', cursive;
 }
 
 .ant-layout-content {
@@ -23,7 +28,7 @@
     display: flex;
     align-items: center;
 
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   p {
@@ -42,7 +47,7 @@
 }
 
 .content-action-stretch {
-  :first-child{
+  :first-child {
     width: 100%;
   }
 }
@@ -72,27 +77,27 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-
-  background: linear-gradient(270deg, #616774 7.29%, #403F4C 100%);
+  background: linear-gradient(270deg, #511376 7.29%, #8444a2 100%);
+  // background: linear-gradient(270deg, #616774 7.29%, #403f4c 100%);
   border-radius: 8px;
 }
 
 .type-btn:hover {
-  background: linear-gradient(270deg, #616774 7.29%, #403F4C 100%) !important;
+  // background: linear-gradient(270deg, #616774 7.29%, #403f4c 100%) !important;
+  background: linear-gradient(270deg, #b5bc1b 7.29%, #a0a90f 100%) !important;
 }
 .type-btn:disabled {
   pointer-events: none;
 }
 
 .type-btn-description {
-  color: #aaa;
-  font-size: 0.7rem;
+  color: #eee;
+  font-size: 0.8rem;
 }
 
 .action-btn {
   width: 100%;
   margin-bottom: 20px;
-
 
   display: flex;
   flex-direction: row;
@@ -101,7 +106,7 @@
   padding: 20px 10px;
 
   /* button/primary/default */
-  background: linear-gradient(180deg, #768BF9 0%, #5870EE 100%);
+  background: @primary-blue;
   border-radius: 8px;
   height: 58px;
 
@@ -122,21 +127,28 @@
 }
 
 .connector {
-  color: #000;
-  background-color: #fff;
+  color: @tungsten-100;
+  background-color: @primary-green;
   border-color: #fff;
 }
 
-.connector:hover, .connector:focus {
-  background: #fff;
-  border-color: #141414;
-  color: #141414;
+.connector:hover,
+.connector:focus {
+  color: @tungsten-100;
+  background: @primary-yellow;
+  border-color: @tungsten-100;
 }
 
-.ant-btn-primary:hover, .ant-btn-primary:focus {
-  color: #5969d4;
-  background: transparent;
-  border-color: #5969d4;
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: @tungsten-100;
+  background: @primary-yellow;
+  border-color: @tungsten-100;
+}
+
+.ant-btn:hover,
+.ant-btn:focus {
+  color: #fff;
 }
 
 .create-statistic {
@@ -165,7 +177,7 @@
     font-weight: 600;
     font-size: 36px;
     line-height: 44px;
-    color: #FFFFFF;
+    color: #ffffff;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -215,8 +227,8 @@
 }
 
 .selected-card {
-  border-width:  3px;
-  border-color: #5870EE !important;
+  border-width: 3px;
+  border-color: #5870ee !important;
   border-style: solid;
 }
 
@@ -240,7 +252,7 @@
 .waiting-title {
   font-weight: 600;
   font-size: 2rem;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -265,7 +277,7 @@
   align-items: center;
 
   margin: 5px auto;
-  background: linear-gradient(270deg, #616774 7.29%, #403F4C 100%);
+  background: linear-gradient(270deg, #616774 7.29%, #403f4c 100%);
   border-radius: 8px;
 
   font-size: 1rem;
@@ -275,7 +287,7 @@
 .particle {
   position: absolute;
   opacity: 0.9;
-  background: linear-gradient(180deg, #D329FC 0%, #8F6DDE 49.48%, #19E6AD 100%);
+  background: linear-gradient(180deg, #d329fc 0%, #8f6dde 49.48%, #19e6ad 100%);
 }
 
 .slider-elem {
@@ -287,7 +299,7 @@
 }
 
 .ant-slider-step {
-  background: linear-gradient(270deg, #616774 7.29%, #403F4C 100%);
+  background: linear-gradient(270deg, #616774 7.29%, #403f4c 100%);
   border-radius: 4px;
   height: 10px;
 }

@@ -165,8 +165,7 @@ export function WalletProvider({ children = null as any }) {
       <MetaplexModal visible={isModalVisible} onCancel={close}>
         <div
           style={{
-            background:
-              'linear-gradient(180deg, #D329FC 0%, #8F6DDE 49.48%, #19E6AD 100%)',
+            background: '#28368c',
             borderRadius: 36,
             width: 50,
             height: 50,
@@ -178,14 +177,22 @@ export function WalletProvider({ children = null as any }) {
             marginBottom: 10,
           }}
         >
-          M
+          <img
+            src="/logo.png"
+            width="60"
+            style={{
+              position: 'relative',
+              top: '-8px',
+              left: '-5px',
+            }}
+          />
         </div>
 
-        <h2>{provider ? 'Change provider' : 'Welcome to Metaplex'}</h2>
+        <h2>{provider ? 'Change provider' : 'Welcome to Fruing Farms'}</h2>
         <p>
           {provider
             ? 'Feel free to switch wallet provider'
-            : 'You must be signed in to place a bid'}
+            : 'You must be signed in to purchase fruit!'}
         </p>
 
         <br />

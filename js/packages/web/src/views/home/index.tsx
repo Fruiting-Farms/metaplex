@@ -230,16 +230,14 @@ export const HomeView = () => {
                   onTabClick={key => setActiveKey(key as LiveAuctionViewState)}
                 >
                   <TabPane
-                    tab={<span className="tab-title">Live Auctions</span>}
+                    tab={<span className="tab-title">Forage</span>}
                     key={LiveAuctionViewState.All}
                   >
                     {liveAuctionsView}
                   </TabPane>
                   {auctionsEnded.length > 0 && (
                     <TabPane
-                      tab={
-                        <span className="tab-title">Secondary Marketplace</span>
-                      }
+                      tab={<span className="tab-title">Re-Forage</span>}
                       key={LiveAuctionViewState.Resale}
                     >
                       {liveAuctionsView}
