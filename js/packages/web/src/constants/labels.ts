@@ -1,5 +1,5 @@
 export const LABELS = {
-  CONNECT_LABEL: 'Sign In',
+  CONNECT_LABEL: 'Login',
   GIVE_SOL: 'Give me SOL',
   FAUCET_INFO:
     'This faucet will help you fund your accounts outside of Solana main network.',
@@ -7,7 +7,7 @@ export const LABELS = {
   MENU_HOME: 'Home',
   MENU_FAUCET: 'Faucet',
   APP_TITLE: 'Fruiting Farms',
-  CONNECT_BUTTON: 'Sign In',
+  CONNECT_BUTTON: 'Login',
   WALLET_TOOLTIP: 'Wallet public key',
   WALLET_BALANCE: 'Wallet balance',
   SETTINGS_TOOLTIP: 'Settings',
