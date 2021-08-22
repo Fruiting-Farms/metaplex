@@ -154,7 +154,7 @@ export const AuctionListView = () => {
       <Layout>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 10 }}>
-            {liveAuctions.length > 0 && (
+            {liveAuctions.length >= 0 && (
               <Row>
                 <Tabs
                   activeKey={activeKey}
