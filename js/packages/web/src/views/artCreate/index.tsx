@@ -743,6 +743,8 @@ const RoyaltiesStep = (props: {
 }) => {
   // const file = props.attributes.image;
   const { wallet, connected } = useWallet();
+  const STORE_ADDRESS = '7AKR4KGfNtdefqieSa5itGUeSVmScpR7srjfmCy6xrzb';
+  const STORE_ROYALTY = 5;
 
   const [creators, setCreators] = useState<Array<UserValue>>([]);
   const [fixedCreators, setFixedCreators] = useState<Array<UserValue>>([]);
@@ -754,11 +756,18 @@ const RoyaltiesStep = (props: {
   useEffect(() => {
     if (wallet?.publicKey) {
       const key = wallet.publicKey.toBase58();
+      console.log('key', key);
+
       setFixedCreators([
         {
           key,
           label: shortenAddress(key),
           value: key,
+        },
+        {
+          key: STORE_ADDRESS,
+          label: shortenAddress(STORE_ADDRESS),
+          value: STORE_ADDRESS,
         },
       ]);
     }
@@ -768,7 +777,13 @@ const RoyaltiesStep = (props: {
     setRoyalties(
       [...fixedCreators, ...creators].map(creator => ({
         creatorKey: creator.key,
-        amount: Math.trunc(100 / [...fixedCreators, ...creators].length),
+        amount:
+          creator.key === STORE_ADDRESS
+            ? Math.trunc(STORE_ROYALTY)
+            : Math.trunc(
+                (100 - STORE_ROYALTY) /
+                  ([...fixedCreators, ...creators].length - 1),
+              ),
       })),
     );
   }, [creators, fixedCreators]);
