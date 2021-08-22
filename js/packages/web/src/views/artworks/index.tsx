@@ -30,16 +30,19 @@ export const ArtworksView = () => {
     700: 2,
     500: 1,
   };
+  const ITEM_BLACKLIST = '9dnKse6for8D1a432zLvXqxhE8oKHDhrjtePUM6WbHj8'; // process.env.ITEM_BLACKLIST?.split(',') || [];
+  console.log(ITEM_BLACKLIST, process.env);
 
-  const items =
-    (activeKey === ArtworkViewState.Owned
+  const items = (
+    activeKey === ArtworkViewState.Owned
       ? ownedMetadata.map(m => m.metadata)
-      : (activeKey === ArtworkViewState.Created
-        ? createdMetadata
-        : metadata));
+      : activeKey === ArtworkViewState.Created
+      ? createdMetadata
+      : metadata
+  ).filter(m => !ITEM_BLACKLIST.includes(m.pubkey));
 
   useEffect(() => {
-    if(connected) {
+    if (connected) {
       setActiveKey(ArtworkViewState.Owned);
     } else {
       setActiveKey(ArtworkViewState.Metaplex);

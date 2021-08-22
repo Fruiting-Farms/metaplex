@@ -743,8 +743,8 @@ const RoyaltiesStep = (props: {
 }) => {
   // const file = props.attributes.image;
   const { wallet, connected } = useWallet();
-  const STORE_ADDRESS = '7AKR4KGfNtdefqieSa5itGUeSVmScpR7srjfmCy6xrzb';
-  const STORE_ROYALTY = 5;
+  const STORE_ADDRESS = process.env.STORE_OWNER_ADDRESS;
+  const STORE_ROYALTY = process.env.STORE_OWNER_ROYALTY;
 
   const [creators, setCreators] = useState<Array<UserValue>>([]);
   const [fixedCreators, setFixedCreators] = useState<Array<UserValue>>([]);
@@ -755,8 +755,17 @@ const RoyaltiesStep = (props: {
 
   useEffect(() => {
     if (wallet?.publicKey) {
+      // const fixedCreators = [];
       const key = wallet.publicKey.toBase58();
-      console.log('key', key);
+
+      //
+      // if (STORE_ADDRESS && STORE_ROYALTY && key !== STORE_ADDRESS) {
+      //   fixedCreators.push({
+      //     key: STORE_ADDRESS,
+      //     label: shortenAddress(STORE_ADDRESS),
+      //     value: STORE_ADDRESS,
+      //   });
+      // }
 
       setFixedCreators([
         {
@@ -764,11 +773,7 @@ const RoyaltiesStep = (props: {
           label: shortenAddress(key),
           value: key,
         },
-        {
-          key: STORE_ADDRESS,
-          label: shortenAddress(STORE_ADDRESS),
-          value: STORE_ADDRESS,
-        },
+        // ...fixedCreators,
       ]);
     }
   }, [connected, setCreators]);
@@ -777,13 +782,13 @@ const RoyaltiesStep = (props: {
     setRoyalties(
       [...fixedCreators, ...creators].map(creator => ({
         creatorKey: creator.key,
-        amount:
-          creator.key === STORE_ADDRESS
-            ? Math.trunc(STORE_ROYALTY)
-            : Math.trunc(
-                (100 - STORE_ROYALTY) /
-                  ([...fixedCreators, ...creators].length - 1),
-              ),
+        amount: Math.trunc(100 / [...fixedCreators, ...creators].length),
+        // creator.key === STORE_ADDRESS
+        //   ? Math.trunc(STORE_ROYALTY)
+        //   : Math.trunc(
+        //       (100 - STORE_ROYALTY) /
+        //         ([...fixedCreators, ...creators].length - 1),
+        //     ),
       })),
     );
   }, [creators, fixedCreators]);
