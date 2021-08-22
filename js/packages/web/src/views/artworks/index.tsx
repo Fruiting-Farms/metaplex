@@ -31,7 +31,6 @@ export const ArtworksView = () => {
     500: 1,
   };
   const ITEM_BLACKLIST = '9dnKse6for8D1a432zLvXqxhE8oKHDhrjtePUM6WbHj8'; // process.env.ITEM_BLACKLIST?.split(',') || [];
-  console.log(ITEM_BLACKLIST, process.env);
 
   const items = (
     activeKey === ArtworkViewState.Owned
