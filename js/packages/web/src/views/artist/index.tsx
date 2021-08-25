@@ -7,9 +7,12 @@ import { CardLoader } from '../../components/MyLoader';
 import { useCreator, useCreatorArts } from '../../hooks';
 
 export const ArtistView = () => {
+  const ITEM_BLACKLIST = '9dnKse6for8D1a432zLvXqxhE8oKHDhrjtePUM6WbHj8'; // process.env.ITEM_BLACKLIST?.split(',') || [];
   const { id } = useParams<{ id: string }>();
   const creator = useCreator(id);
-  const artwork = useCreatorArts(id);
+  const artwork = useCreatorArts(id).filter(
+    m => !ITEM_BLACKLIST.includes(m.pubkey),
+  );
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
