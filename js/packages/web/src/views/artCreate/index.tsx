@@ -1035,14 +1035,14 @@ const LaunchStep = (props: {
         >
           Pay with SOL
         </Button>
-        <Button
+        {/* <Button
           disabled={true}
           size="large"
           onClick={props.confirm}
           className="action-btn"
         >
           Pay with Credit Card
-        </Button>
+        </Button> */}
       </Row>
     </>
   );

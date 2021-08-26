@@ -1,19 +1,17 @@
 import { Layout } from 'antd';
 import React from 'react';
+import { ContentView } from './content';
 import { useStore } from '@oyster/common';
 import { useMeta } from '../../contexts';
-import { AuctionListView } from './auctionList';
-import { SetupView } from './setup';
 
 export const HomeView = () => {
-  const { isLoading, store } = useMeta();
-  const { isConfigured } = useStore();
+  const meta = useMeta();
 
-  const showAuctions = (store && isConfigured) || isLoading;
+  console.log('meta', meta);
 
   return (
     <Layout style={{ margin: 0, marginTop: 30, alignItems: 'center' }}>
-      {showAuctions ? <AuctionListView /> : <SetupView />}
+      <ContentView />
     </Layout>
   );
 };
