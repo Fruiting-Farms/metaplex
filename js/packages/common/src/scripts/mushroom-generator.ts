@@ -18100,13 +18100,15 @@ async function main() {
   const mushroomJson = JSON.stringify(mushrooms);
 
   console.log('Mushrooms Generated: ', mushroomJson);
-  // console.log('Mushroom JSON Generated: ', mushroomJson);
+  console.log('Starting To Write Metadata...');
 
-  // console.log('Starting To Write Metadata...');
-
-  fs.writeFile('./mushroom_metadata.json', mushroomJson, () => {
-    console.log('mushroom_metadata.json written');
-  });
+  fs.writeFileSync('./mushroom_metadata.json', mushroomJson);
 }
 
-main();
+main()
+  .then(() => {
+    console.log('Complete!');
+  })
+  .catch(e => {
+    console.error(e);
+  });
