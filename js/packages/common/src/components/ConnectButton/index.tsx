@@ -1,8 +1,9 @@
 import { Button, Dropdown, Menu } from 'antd';
 import { ButtonProps } from 'antd/lib/button';
-import React from 'react';
-import { useWallet } from './../../contexts/wallet';
-import { LABELS } from './../../constants/labels';
+import React, { useCallback } from 'react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '../../contexts';
+
 export interface ConnectButtonProps
   extends ButtonProps,
     React.RefAttributes<HTMLElement> {
@@ -10,39 +11,38 @@ export interface ConnectButtonProps
 }
 
 export const ConnectButton = (props: ConnectButtonProps) => {
-  const { connected, connect, select, provider } = useWallet();
   const { onClick, children, disabled, allowWalletChange, ...rest } = props;
+
+  const { wallet, connect, connected } = useWallet();
+  const { setVisible } = useWalletModal();
+  const open = useCallback(() => setVisible(true), [setVisible]);
+
+  const handleClick = useCallback(
+    () => (wallet ? connect().catch(() => {}) : open()),
+    [wallet, connect, open],
+  );
 
   // only show if wallet selected or user connected
 
-  const menu = (
-    <Menu>
-      <Menu.Item key="3" onClick={select}>
-        Change Wallet
-      </Menu.Item>
-    </Menu>
-  );
-
-  if (!provider || !allowWalletChange) {
+  if (!wallet || !allowWalletChange) {
     return (
-      <Button
-        className="connector"
-        {...rest}
-        onClick={connected ? onClick : connect}
-        disabled={connected && disabled}
-      >
-        {connected ? children : LABELS.CONNECT_LABEL}
+      <Button {...rest} onClick={handleClick} disabled={connected && disabled}>
+        {connected ? props.children : 'Connect'}
       </Button>
     );
   }
 
   return (
     <Dropdown.Button
-      onClick={connected ? onClick : connect}
+      onClick={handleClick}
       disabled={connected && disabled}
-      overlay={menu}
+      overlay={
+        <Menu>
+          <Menu.Item onClick={open}>Change Wallet</Menu.Item>
+        </Menu>
+      }
     >
-      LABELS.CONNECT_LABEL
+      Connect
     </Dropdown.Button>
   );
 };
